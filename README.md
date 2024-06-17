@@ -1,4 +1,4 @@
-# NodeJS Server
+# NodeJS Server Microservice
 
 Welcome to the NodeJS Server Microservice project! This repository contains the code for a basic server implemented using Node.js.
 
