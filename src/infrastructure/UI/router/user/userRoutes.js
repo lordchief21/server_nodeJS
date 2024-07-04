@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router} from "express";
 import UserBuilder from "../utils/user.util.cjs";
 import { Sequelize } from "sequelize";
 import "dotenv/config.js";
