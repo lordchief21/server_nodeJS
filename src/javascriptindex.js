@@ -1,11 +1,11 @@
 import express from 'express'
-import user from './controllers/userRoutes.js'
+import route from './infrastructure/UI/router/user/userRoutes'
 
 const app = express();
 
 app.use(express.json());
 -
-app.use('/user',user)
+app.use('/user',route)
 
 app.get('/', (req, res)=>{
     res.send('Hello world')
