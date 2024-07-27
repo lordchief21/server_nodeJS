@@ -2,9 +2,8 @@ import { Router} from "express";
 import {UserBuilder} from '../../../../utils/user';
 import "../../../connectionDB/connection_postgreSQL";
 import "dotenv/config.js";
-import {User} from "../../../models/userModel";
-import { SQLRepository } from "../../../connectionDB/connection_postgreSQL";
-import { error } from "console";
+import Users from "../../../models/userModel.model";
+import SQLRepository  from "../../../connectionDB/connection_postgreSQL";
 
 const route = Router();
 
@@ -29,22 +28,25 @@ route.route('/')
 //Create user 
 route.post('/create', async (req,res)=>{
     try {
-        const conn:SQLRepository = new SQLRepository()
-        await conn.connectDb()
-        console.log('db Connected Successfully...')
-        res.status(501).json({msj:'Not implemented'})
+        
+        
 
-        // const createuser = new UserBuilder()
-        // .setGeneralInfo(req.body.username,req.body.email)
-        // .hashPass(req.body.password)
-        // .build()
+        const createuser = new UserBuilder()
+        .setGeneralInfo(req.body.username,req.body.email)
+        .hashPass(req.body.password)
+        .build()
+        const conn:SQLRepository = new SQLRepository()
+       
+        await conn.connectDb()
+        const user = Users.build({ username: createuser.username, email: createuser.email, hashed_pass:createuser.password, salt:createuser.salt }).save()
+        res.status(200).send({msg:"user created and save on database"})
         
     }catch(err)  {
         console.log(err)
     }
     
    
-    // const user = User.build({username: createuser.username, email: createuser.email, hashed_pass:createuser.password, salt:createuser.salt })
+    
     // user.save()
     // res.status(200).send({msg:"user created and save on database", user:user})
 

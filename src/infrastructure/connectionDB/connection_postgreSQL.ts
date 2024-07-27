@@ -1,29 +1,21 @@
 import "dotenv/config.js"
 
-//Only needed to use __dirname
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-
 import { Sequelize } from "sequelize-typescript"
+import Users from "../models/userModel.model";
 
-var __filename = fileURLToPath(import.meta.url);
-var __dirname =path.dirname(__filename);
-__dirname = path.join(__dirname, ...Array(1).fill('..'))
-
-export class SQLRepository {
+export default class SQLRepository {
 
 
     // private __filename = fileURLToPath(import.meta.url);
     // private __dirname = path.dirname(this.__filename);
     // private __dirname = path.join(__dirname, ...Array(1).fill('..'))
 
-
+    
     constructor() {
         this.connectDb()
     }
 
-    connectDb(): any {
+    async connectDb() {
         const repo = new Sequelize({
 
             database: this.CONFIG_INITDB.DB_NAME,
@@ -32,10 +24,18 @@ export class SQLRepository {
             password: this.CONFIG_INITDB.DB_PASSWORD,
             host:this.CONFIG_INITDB.DB_HOST,
             port: Number(this.CONFIG_INITDB.DB_PORT),
-            models: [__dirname + '/models']
+            models: [Users],
 
         })
-
+        try {
+            await repo.authenticate();
+            console.log('Connection has been established successfully.');
+            await repo.sync({alter:true})
+            console.log('All models were synchronized successfully.');
+          } catch (error) {
+            console.error('Unable to connect to the database:', error);
+          }
+        
     }
 
 

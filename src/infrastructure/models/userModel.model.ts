@@ -8,10 +8,9 @@ import { Column, Model, Table, Sequelize, DataType} from "sequelize-typescript"
 
 @Table({
     timestamps: true,
-    tableName:'tours',
-    modelName:'Tour',
+    tableName:'users',
 })
-export class User extends Model{
+export default class Users extends Model{
 
     @Column({
         primaryKey:true,
@@ -45,5 +44,3 @@ export class User extends Model{
      declare salt:string;
 
 }
-
-export default User
