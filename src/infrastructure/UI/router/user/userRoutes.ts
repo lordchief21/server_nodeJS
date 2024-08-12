@@ -32,7 +32,7 @@ route.post('/create', async (req,res)=>{
         
 
         const createuser = new UserBuilder()
-        .setGeneralInfo(req.body.username,req.body.email)
+        .setGeneralInfo(req.body.userEmail,req.body.email)
         .hashPass(req.body.password)
         .build()
         const conn:SQLRepository = new SQLRepository()
