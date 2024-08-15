@@ -64,43 +64,42 @@ npm start
 
 ## BusinessRules
  1. User
-    # Registration and Authentication:
-    Email Verification
-    Password Requirements
-    Account Recovery
-    # Course Enrollment:
-    Prerequisites
-    Course Limits
-    Payment Requirements
-    # Content Access:
-    Access Levels
-    Progress Tracking:
-    Material Downloads
-    # Assessment and Certification:
-    Quiz Attempts
-    Pass Criteria
-    Certification:
-    # User Progress and Analytics
-    Progress Tracking:
-    Completion Reminders
-    Analytics
-    # Communication and Interaction:
-    Messaging
-    Discussion Forums:
-    Feedback
-    # User Roles and Permissions
-    Role Management
-    Access Control:
-    # User Data and Privacy:
-    Data Retention
-    Data Export
-    Account Deletion
-    # Compliance and Code of Conduct
-    Content Usage
-    Academic Integrity
-    Community Guidelines
-    # Notifications and Alerts
-    Course Updates
-    Achievement Alerts
-    
+# Registration and Authentication:
+-Email Verification
+-Password Requirements
+-Account Recovery
+# Course Enrollment:
+-Prerequisites
+-Course Limits
+-Payment Requirements
+# Content Access:
+-Access Levels
+-Progress Tracking:
+-Material Downloads
+# Assessment and Certification:
+-Quiz Attempts
+-Pass Criteria
+Certification:
+# User Progress and Analytics
+-Progress Tracking:
+-Completion Reminders
+-Analytics
+# Communication and Interaction:
+-Messaging
+-Discussion Forums:
+-Feedback
+# User Roles and Permissions
+-Role Management
+-Access Control:
+# User Data and Privacy:
+-Data Retention
+-Data Export
+-Account Deletion
+# Compliance and Code of Conduct
+-Content Usage
+-Academic Integrity
+-Community Guidelines
+# Notifications and Alerts
+-Course Updates
+-Achievement Alerts
 
