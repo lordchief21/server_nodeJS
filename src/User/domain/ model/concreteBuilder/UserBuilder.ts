@@ -1,6 +1,6 @@
 
 import { User } from '../enitities/User';
-import { Builder } from '../builder/user/Builder';
+import { Builder } from '../builder/Builder';
 
 
 export class UserBuilder implements Builder  {
@@ -10,8 +10,8 @@ export class UserBuilder implements Builder  {
         this.user = new User()
     }
 
-    public setGeneralInfo(userEmail: string): this {
-        this.user.setGeneralInfo(userEmail)
+    public setGeneralInfo(userName:string, userEmail: string): this {
+        this.user.setGeneralInfo(userName,userEmail,'undefined')
         return this
     }
     

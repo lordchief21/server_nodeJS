@@ -1,9 +1,9 @@
 import "dotenv/config.js"
 
 import { Sequelize } from "sequelize-typescript"
-import Users from "../models/userModel.model";
+import Users from "../models/UserModel.model";
 
-export default class SQLRepository {
+export default class SequelizeRepository {
 
 
     // private __filename = fileURLToPath(import.meta.url);

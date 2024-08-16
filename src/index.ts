@@ -1,5 +1,5 @@
 import express from 'express'
-import route from './infrastructure/UI/router/user/userRoutes'
+import route from './User/infrastructure/UI/router/userRoutes'
 
 const app = express();
 
@@ -10,10 +10,6 @@ app.use('/user',route)
 app.get('/', (req, res)=>{
     res.send('Hello world')
 });
-
-
-
-
 
 app.use((req,res, next) => {
     res.status(404).send("I can't find that !!")
