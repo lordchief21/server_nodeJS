@@ -23,8 +23,8 @@ route.route('/')
 //Create user 
 route.post('/create', async (req,res)=>{
     try {
-       const user = new UserExpressRouter()
-       user.create(req,res)
+       const user = new UserExpressRouter().create(req,res)
+       
         
     }catch(err)  {
         console.log(err)

@@ -1,6 +1,4 @@
 import { Request, Response, Router } from "express";
-import { PostgresUserRepository } from "../repository/db/PostgresUserRepository";
-import SequelizeRepository from "../connectionDB/SequelizeConnection";
 import { serviceContainer } from "../../../shared/infra/ServiceContainer";
 
 import bcrypt from 'bcryptjs'

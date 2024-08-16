@@ -30,7 +30,7 @@ export default class SequelizeRepository {
         try {
             await repo.authenticate();
             console.log('Connection has been established successfully.');
-            await repo.sync({alter:true})
+            await repo.sync()
             console.log('All models were synchronized successfully.');
           } catch (error) {
             console.error('Unable to connect to the database:', error);
