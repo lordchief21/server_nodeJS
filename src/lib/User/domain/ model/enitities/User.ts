@@ -19,6 +19,19 @@ export class User {
      this.userPassword = userPassword
    }
 
+   public MapToObject() {
+    
+    return {
+      userId : this.userId,
+      userName : this.userName,
+      userEmail : this.userEmail,
+      userSalt : this.userSalt,
+      userPassword : this.userPassword 
+    }
+      
+    
+   }
+
    get getUserId() {return this.userId}
    get getUserName() {return this.userName}
    get getUserEmail() {return this.userEmail}

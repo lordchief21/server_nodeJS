@@ -6,7 +6,7 @@ const userRepository = new PostgresUserRepository(new SequelizeRepository)
 
 export const serviceContainer = {
     user: {
-        create: new UserService(userRepository)
+        service: new UserService(userRepository)
     }
 }
 

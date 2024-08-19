@@ -9,8 +9,24 @@ export class UserExpressRouter {
         const {username, email, password} = req.body
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = bcrypt.hashSync(password,salt)
-        await serviceContainer.user.create.userCreate(username,email,hashedPassword,salt)
-
-        res.status(200).send("User Saved")
+        const result = serviceContainer.user.service.createUser(username,email,hashedPassword,salt)
+        res.status(200).send({msg:"User Saved",user:result})
     }
+
+    async findById(req:Request, res:Response) {
+        const {id} = req.params
+        const result = await serviceContainer.user.service.getUserById(id)
+        
+        res.status(200).send({msg:"User Founded", usr: result})
+    }
+
+    async delete(req: Request, res: Response ) {
+        const {id} = req.params
+
+        const result =  await serviceContainer.user.service.deleteUser(id)
+        console.log('user',result)
+        res.status(200).send({msg:"User Deleted", usr: result})
+    }
+    
+    
 }

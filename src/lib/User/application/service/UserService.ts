@@ -1,19 +1,45 @@
 import { UserBuilder } from "../../domain/ model/concreteBuilder/UserBuilder";
+import { User } from "../../domain/ model/enitities/User";
 import { UserRepository } from "../../domain/repository/UserRepository";
 
 
 export class UserService {
 
+
     constructor(private userRepository:UserRepository) {}
     
-    public userCreate(userName: string, userEmail:string, userPassword:string, userSalt:string) {
+    public async createUser(userName: string, userEmail:string, userPassword:string, userSalt:string, userId?:string) : Promise<User | void> {
         
         const newUser = new UserBuilder()
-        .setGeneralInfo(userName,userEmail)
+        .setGeneralInfo(userName,userEmail,userId)
         .setPassword(userPassword,userSalt)
         .build()
+        await this.userRepository.createUser(newUser)
+        return newUser
+    }
 
-        return this.userRepository.createUser(newUser)
+    public async getUserById(userId:string) : Promise<User | null > {
+        
+        const user = await this.userRepository.getUserById(userId)    
+        
+        if(!user) throw new Error("User Not Found")
+        
+            console.log('UserService', user)
+        return user
+        
+    }
+
+
+    
+    
+    public async deleteUser(userId : string) : Promise<User> {
+        const userToDelete = this.getUserById(userId)
+          
+        if(!userToDelete) throw new Error('deleteUserAdpater')
+        
+        const userDeleted = await this.userRepository.deleteUser(userId)
+        
+        return userDeleted
     }
 
     
