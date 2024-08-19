@@ -23,19 +23,27 @@ export class User {
     
     return {
       userId : this.userId,
-      userName : this.userName,
-      userEmail : this.userEmail,
-      userSalt : this.userSalt,
-      userPassword : this.userPassword 
+      username : this.userName,
+      email : this.userEmail,
+      salt : this.userSalt,
+      password : this.userPassword 
     }
       
     
    }
 
+   get infoUser() {
+    return {
+      userId:  this.userId,
+      userName : this.getUserName,
+      userEmail: this.userEmail
+
+    }
+   }
    get getUserId() {return this.userId}
    get getUserName() {return this.userName}
    get getUserEmail() {return this.userEmail}
    get getUserSalt() {return this.userSalt}
    get getUserPassword() {return this.userPassword}
-
+   
 }

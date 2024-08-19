@@ -43,11 +43,10 @@ export class PostgresUserRepository implements UserRepository {
 
         if(!user) throw Error('User Not Found')
 
-        const mapUser = this.mapToUserDomain(user)
+            const mapUser = this.mapToUserDomain(user)
+            
         
-        console.log('UserPostgres', mapUser)
-       
-        return mapUser
+            return mapUser
         
     }
 
@@ -58,7 +57,6 @@ export class PostgresUserRepository implements UserRepository {
                 userID: userId
             }
         })
-        
         
 
         if(!user) throw Error('User Not Found')
@@ -74,17 +72,47 @@ export class PostgresUserRepository implements UserRepository {
         return mapUser
     }
 
-    private mapToUserDomain(user: Users) : User {
+    async editUser(user:User): Promise<User> {
+        
+        const usertoFind = await Users.findOne({
+            where: {
+                userID: user.getUserId
+            }
+        })
+        
+        if(!usertoFind) throw new Error('User Not Found')
+            const test = this.mapToUserDomain(usertoFind)
+            const userInfo = test.infoUser
 
+
+
+
+            console.log('PostgresRepoEditUserInfo', userInfo)
+            const result = this.mapToUserDomain(await usertoFind.set(
+                {username:user.getUserName != '' ? user.getUserName: usertoFind.username,
+                email: user.getUserEmail != '' ? user.getUserEmail : usertoFind.email
+                }).save()) 
+            console.log('PostgresRepoEdit', result)
+            return result
+
+
+    }
+
+    private mapToUserDomain(user: Users) :User {
+       
         const buildUser = new UserBuilder()
-        .setGeneralInfo(user.username,user.email,user.userID)
-        .setPassword(user.hashed_pass,user.salt)
-        .build()
+            .setGeneralInfo(user.username,user.email,user.userID)
+            .setPassword(user.hashed_pass,user.salt)
+            .build()
+            
+            return buildUser
+
+        
 
         
         
         
-        return buildUser
+        
 
     }
 

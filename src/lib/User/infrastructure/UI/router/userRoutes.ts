@@ -44,6 +44,14 @@ route.delete('/:id', async ( req,res) => {
     }
 })
 
+route.put('/:id', (req, res) => {
+    try {
+        new UserExpressRouter().edit(req,res)
+    } catch (error) {
+        console.log("Error Route",error)
+    }
+})
+
 
 
 export default route ;

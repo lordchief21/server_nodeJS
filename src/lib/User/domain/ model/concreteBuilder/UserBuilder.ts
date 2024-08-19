@@ -29,8 +29,8 @@ export class UserBuilder implements Builder  {
     }
 
 
-    public mapUser() {
-        return this.user.MapToObject()
+    public infoUser() {
+        this.user.infoUser
     }
 
 
