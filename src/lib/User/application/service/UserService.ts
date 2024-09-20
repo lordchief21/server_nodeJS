@@ -24,7 +24,7 @@ export class UserService {
         
         if(!user) throw new Error("User Not Found")
         
-            console.log('UserService', user)
+        console.log('UserService', user)
         return user
         
     }

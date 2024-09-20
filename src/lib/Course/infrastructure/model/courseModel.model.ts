@@ -22,13 +22,19 @@ export default class Course extends Model{
         type: DataType.STRING,
         allowNull: false
      })
-     declare name:string;
+     declare course_name:string;
 
      @Column({
         type: DataType.STRING,
         allowNull: false
      })
      declare description :string;
+
+     @Column({
+      type: DataType.STRING,
+      allowNull: false
+      })
+      declare price :number;
     
      @Column({
         type: DataType.STRING,
