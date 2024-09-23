@@ -56,7 +56,7 @@ export default class Course {
     }
 
     //Getter for CourseId
-    getCourseId(): string {
+    getCourseId(courseId:string): string {
       if(this.courseId == undefined) throw Error('Course not found')
         return this.courseId;
     }

@@ -23,12 +23,15 @@ export class CourseService {
     }
 
     public async selectCourse(courseID: string): Promise<Course | null> {
-        return null
+            await this.courseRepository.selectCourse(courseID)
+            return null
     }
 
     public async deleteCourse(courseID: string): Promise<void> {
     
     }
+
+
     public async updateCourse(courseID: string): Promise<Course | null> {
         return null
     }
