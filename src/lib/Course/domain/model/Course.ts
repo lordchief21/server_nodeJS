@@ -4,12 +4,14 @@ export default class Course {
     private price: number;
     private readonly courseImage: string;
     private isDisabled: boolean;
+    private courseId? : string ;
   
-    constructor(courseName: string, description: string, price: number, courseImage: string, isDisabled: boolean) {
+    constructor(courseName: string, description: string, price: number, courseImage: string, isDisabled: boolean, courseId?:string) {
       if (price <= 0) {
         throw new Error('Price cannot be less than or equal to 0');
       }
-  
+      
+      this.courseId = courseId;
       this.courseName = courseName;
       this.description = description;
       this.price = price;
@@ -21,6 +23,7 @@ export default class Course {
     calculateTotalPrice(taxes: number[]): number {
       const totalTaxes = taxes.reduce((accum, currentTax) => {
         if (currentTax < 0) throw new Error('Tax cannot be negative');
+        currentTax = currentTax * this.price
         return accum + currentTax;
       }, 0);
   
@@ -50,6 +53,12 @@ export default class Course {
     // Getter for isDisabled
     getIsDisabled(): boolean {
       return this.isDisabled;
+    }
+
+    //Getter for CourseId
+    getCourseId(): string {
+      if(this.courseId == undefined) throw Error('Course not found')
+        return this.courseId;
     }
   
     // Setter for price (with validation)

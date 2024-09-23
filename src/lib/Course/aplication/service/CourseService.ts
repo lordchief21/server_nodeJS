@@ -2,11 +2,23 @@ import Course from '../../domain/model/Course';
 import {CourseRepository} from '../../domain/repository/CourseRepository'
 
 
-export class CourseService implements CourseRepository {
+export class CourseService {
 
-    constructor(courseRepository:CourseRepository){}
+    constructor(private courseRepository:CourseRepository){}
 
-    public async createCourse(course: Course): Promise<void> {
+    public async createCourse(courseName:string,description:string,price:number, courseImage:string, isDisable:boolean): Promise<void> {
+
+        //Instance Course Object
+        const newCourse = new Course(courseName,description,price,courseImage,isDisable)
+
+        //Calculate taxes
+        let totalPrice = newCourse.calculateTotalPrice([0.12,0.14])
+        
+
+        //set new Price including taxes
+        newCourse.setPrice(totalPrice)
+
+        await this.courseRepository.createCourse(newCourse)
     
     }
 
