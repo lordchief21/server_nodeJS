@@ -30,8 +30,11 @@ export class CourseService {
         return courseSelected    
     }
 
-    public async deleteCourse(courseID: string): Promise<void> {
-    
+    public async deleteCourse(courseID: string): Promise<Course | null> {
+        const courseDeleted = await this.courseRepository.deleteCourse(courseID)
+        if(!courseDeleted) throw new Error('Course does not exist')
+            
+            return courseDeleted
     }
 
 

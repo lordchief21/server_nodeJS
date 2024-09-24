@@ -31,6 +31,16 @@ export class CourseExpressController {
         }
     }
 
+    async delete(req:Request, res:Response) {
+        try {
+            const {id} = req.params
+            const deleteCourse = await serviceContainer.course.service.deleteCourse(id)
+            res.status(200).send({msg:'Course Deleted', course:deleteCourse}) 
+        } catch (error) {
+            res.status(500).send({msg:'Course Not found', err:error})
+        }
+    }
+
 
 
 

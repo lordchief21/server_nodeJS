@@ -28,13 +28,21 @@ router.post('/create', async (req,res)=>{
     }   
 }); 
 
-router.get('/search/:id', async (req,res) =>{
+router.route('/search/:id').get(async (req,res) =>{
     try {
         const courseSelected = new CourseExpressController
         courseSelected.select(req,res)
     } catch (error) {
         console.log(error)
     }
-} )
+} ).delete(async (req,res)=> {
+    try {
+        const courseDeleted = new CourseExpressController
+        courseDeleted.delete(req,res)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 export default router

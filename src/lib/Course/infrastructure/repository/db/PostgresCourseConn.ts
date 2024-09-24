@@ -48,7 +48,7 @@ export class PostgresCourseConn implements CourseRepository {
         
     }
 
-    async deleteCourse(courseID: string): Promise<void> {
+    async deleteCourse(courseID: string): Promise<Course | null> {
         try {
             const courses = await Courses.findOne({
                 where: {
@@ -57,9 +57,12 @@ export class PostgresCourseConn implements CourseRepository {
             })
             if(!courses) throw new Error('Course not found')
                 courses?.destroy()
+                const courseMapped = this.mapToCourseDomain(courses)
+                return courseMapped
             
         } catch (error) {
             console.log('PostgresCourseConn', error)
+            return null
         }
     }
 
