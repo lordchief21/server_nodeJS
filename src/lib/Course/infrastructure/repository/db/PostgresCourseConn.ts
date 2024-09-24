@@ -36,15 +36,15 @@ export class PostgresCourseConn implements CourseRepository {
                 }
             })
             if(!courses) throw new Error('Course not found')
-                const mapCourse = this.mapToCourseDomain(courses)   
+                console.log('test',courses)
+                const mapCourse = this.mapToCourseDomain(courses)
+                console.log('mapped',mapCourse)
                 return mapCourse
 
         } catch (error) {
             console.log('PostgresCourseConn', error)
-            
-        } finally {
-            return null
-        }
+            return null   
+        } 
         
     }
 
@@ -95,12 +95,12 @@ export class PostgresCourseConn implements CourseRepository {
 
     private mapToCourseDomain(courses:Courses):Course {
         const course = new Course(
-            courses.course_name,
-            courses.description,
-            courses.price,
-            courses.courseImage,
-            courses.isDisable,
-            courses.id
+            courses.dataValues.course_name,
+            courses.dataValues.description,
+            courses.dataValues.price,
+            courses.dataValues.courseImage,
+            courses.dataValues.isDisable,
+            courses.dataValues.id
         )
         return course
     }

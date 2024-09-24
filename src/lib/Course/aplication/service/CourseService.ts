@@ -19,12 +19,15 @@ export class CourseService {
         newCourse.setPrice(totalPrice)
 
         await this.courseRepository.createCourse(newCourse)
+
     
     }
 
     public async selectCourse(courseID: string): Promise<Course | null> {
-            await this.courseRepository.selectCourse(courseID)
-            return null
+         
+        const courseSelected = await this.courseRepository.selectCourse(courseID)
+        if(!courseSelected) throw new Error('Course not found')
+        return courseSelected    
     }
 
     public async deleteCourse(courseID: string): Promise<void> {

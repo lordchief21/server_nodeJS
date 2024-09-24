@@ -21,9 +21,20 @@ router.route('/')
 
 router.post('/create', async (req,res)=>{
     try {
-        const course = new CourseExpressController().create(req,res) 
+        const course = new CourseExpressController
+        course.create(req,res)
     }catch(err)  {
             console.log(err)
-}}); 
+    }   
+}); 
+
+router.get('/search/:id', async (req,res) =>{
+    try {
+        const courseSelected = new CourseExpressController
+        courseSelected.select(req,res)
+    } catch (error) {
+        console.log(error)
+    }
+} )
 
 export default router

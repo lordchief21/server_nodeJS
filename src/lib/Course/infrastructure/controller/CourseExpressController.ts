@@ -20,6 +20,17 @@ export class CourseExpressController {
 
     }
 
+    async select(req: Request,res: Response) {
+        try {
+            const {id} = req.params
+
+            const findCourse = await serviceContainer.course.service.selectCourse(id)
+            res.status(200).send({msg: 'Course Found', course:findCourse})
+        } catch (error) {
+            res.status(500).send({msg:'Course not Found',err:error}) 
+        }
+    }
+
 
 
 
