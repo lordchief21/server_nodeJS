@@ -6,10 +6,10 @@ import { Column, Model, Table, DataType} from "sequelize-typescript"
 
 @Table({
     timestamps: true,
-    tableName:'categories',
+    tableName:'courses',
 })
 
-export default class Course extends Model{
+export default class Courses extends Model{
 
     @Column({
         primaryKey:true,
@@ -46,6 +46,6 @@ export default class Course extends Model{
         type: DataType.BOOLEAN,
         allowNull: false
      })
-     declare disable:boolean;
+     declare isDisable:boolean;
 
 }

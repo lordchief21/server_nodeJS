@@ -31,32 +31,32 @@ export default class Course {
     }
   
     // Getter for courseName
-    getCourseName(): string {
+    get getCourseName(): string {
       return this.courseName;
     }
   
     // Getter for description
-    getDescription(): string {
+    get getDescription(): string {
       return this.description;
     }
   
     // Getter for price
-    getPrice(): number {
+    get getPrice(): number {
       return this.price;
     }
   
     // Getter for courseImage
-    getCourseImage(): string {
+    get getCourseImage(): string {
       return this.courseImage;
     }
   
     // Getter for isDisabled
-    getIsDisabled(): boolean {
+    get getIsDisabled(): boolean {
       return this.isDisabled;
     }
 
     //Getter for CourseId
-    getCourseId(courseId:string): string {
+    get getCourseId(): string {
       if(this.courseId == undefined) throw Error('Course not found')
         return this.courseId;
     }

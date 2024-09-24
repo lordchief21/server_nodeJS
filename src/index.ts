@@ -1,11 +1,12 @@
 import express from 'express'
-import route from './lib/User/infrastructure/UI/router/userRoutes';
-
+import userRoute from './lib/User/infrastructure/UI/router/userRoutes';
+import courseRoute from './lib/Course/infrastructure/router/courseRouter'
 const app = express();
 
 app.use(express.json()); 
 -
-app.use('/user',route)
+app.use('/user',userRoute)
+app.use('/course',courseRoute)
 
 app.get('/', (req, res)=>{
     res.send('Hello world')
