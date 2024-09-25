@@ -38,11 +38,11 @@ export class CourseService {
     }
 
 
-    public async updateCourse(course:Course): Promise<Course | undefined> {
-        const courseToEdit = course.getCourseId
+    public async updateCourse(courseID:string, updateField:any): Promise<Course | undefined> {
 
-        if(!courseToEdit) throw new Error('Course Not Found')
-            const courseResult =  await this.courseRepository.updateCourse(course) 
+
+        if(!courseID && !updateField) throw new Error('Course Not Found')
+            const courseResult =  await this.courseRepository.updateCourse(courseID, updateField) 
             return courseResult
     }
 

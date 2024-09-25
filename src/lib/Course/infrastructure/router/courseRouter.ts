@@ -42,6 +42,13 @@ router.route('/search/:id').get(async (req,res) =>{
     } catch (error) {
         console.log(error)
     }
+}).patch(async (req,res)=>{
+    try {
+        const courseUpdated = new CourseExpressController
+        courseUpdated.update(req,res)
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 

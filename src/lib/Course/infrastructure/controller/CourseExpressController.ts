@@ -41,6 +41,18 @@ export class CourseExpressController {
         }
     }
 
+    async update(req:Request, res:Response) { 
+        try {
+            const {id} = req.params
+            const updateField = req.body
+            console.log('updateField', updateField)
+            const updateCourse = await serviceContainer.course.service.updateCourse(id,updateField)
+            res.status(200).send({msg:'Course Updated', course:updateCourse})
+        } catch (error) {
+            res.status(500).send({msg:'Course Not Found'})
+        }
+    }
+
 
 
 

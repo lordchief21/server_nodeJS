@@ -66,26 +66,20 @@ export class PostgresCourseConn implements CourseRepository {
         }
     }
 
-    async updateCourse(course: Course): Promise<Course | undefined> {
+    async updateCourse(courseID: string, updateField:any): Promise<Course | undefined> {
         
         try {
             const courses = await Courses.findOne({
                 where: {
-                    id: course.getCourseId
+                    id: courseID
                 }
             })
             
-            if(!courses) throw new Error('User Not Found')
+            if(!courses) throw new Error('Course Not Found')
                 const mapCourse = this.mapToCourseDomain(courses)
 
-                const result = this.mapToCourseDomain(await courses.set(
-                    {course_name:course.getCourseName != ''? course.getCourseName:courses.course_name,
-                    description: course.getCourseName != ''? course.getDescription: courses.description,
-                    price: course.getPrice != Number() ? course.getPrice: courses.price,
-                    courseImage: course.getCourseImage != '' ? course.getCourseImage : courses.courseImage,
-                    isDisable: course.getIsDisabled != Boolean() ? course.getIsDisabled : courses.isDisable
-
-                    }).save()) 
+                console.log('PostgressConUpdateField',updateField)
+                const result = this.mapToCourseDomain(await courses.set(updateField).save()) 
                 console.log('PostgresRepoEdit', result)
                 return result
         } catch (error) {
