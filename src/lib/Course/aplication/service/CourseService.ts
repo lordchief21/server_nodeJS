@@ -26,7 +26,7 @@ export class CourseService {
     public async selectCourse(courseID: string): Promise<Course | null> {
          
         const courseSelected = await this.courseRepository.selectCourse(courseID)
-        if(!courseSelected) throw new Error('Course not found')
+        if(!courseSelected) throw new Error('Course Not found')
         return courseSelected    
     }
 
