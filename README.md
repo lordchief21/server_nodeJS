@@ -18,7 +18,7 @@ Welcome to the NodeJS Server Microservice project! This repository contains the 
 
 ## Introduction
 
-This project demonstrates how to build a simple, yet powerful server using Node.js. It is a starting point for creating web applications or APIs, providing a robust and scalable server-side framework.
+This project demonstrates how to build a simple, yet powerful server using Node.js. It serves as a starting point for creating web applications or APIs, offering a robust and scalable server-side framework.
 
 ## Features
 
